@@ -1,11 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Personal Webpage</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Academic Portfolio</title>
+    <style>
+        /* This section (CSS) controls how everything looks */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; background-color: #f9f9f9; }
+        header { background-color: #2c3e50; color: white; padding: 40px 20px; text-align: center; }
+        .profile-pic { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid white; margin-bottom: 15px; }
+        .social-buttons { margin-top: 15px; }
+        .btn { display: inline-block; padding: 10px 20px; margin: 5px; text-decoration: none; border-radius: 5px; color: white; font-weight: bold; }
+        .btn-linkedin { background-color: #0077b5; }
+        .btn-scholar { background-color: #4285f4; }
+        .btn-email { background-color: #e74c3c; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        section { background: white; padding: 30px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        h2 { border-bottom: 2px solid #2c3e50; padding-bottom: 10px; color: #2c3e50; }
+        .news-item { border-left: 4px solid #3498db; padding-left: 15px; margin-bottom: 20px; }
+        .read-more { color: #3498db; text-decoration: none; font-weight: bold; }
+    </style>
 </head>
 <body>
-    <h1>Hello, I am [Your Name]</h1>
-    <p>Welcome to my new personal website hosted on GitHub Pages!</p>
-    <p>I am currently learning how to build things on the web.</p>
+
+    <header>
+        <img src="profile.jpg" alt="My Profile Picture" class="profile-pic">
+        <h1>[Your Name]</h1>
+        <p>Researcher | Scientist | Academic</p>
+        
+        <div class="social-buttons">
+            <a href="https://www.linkedin.com/in/tobias-fellner-112003256/" class="btn btn-linkedin" target="_blank">LinkedIn</a>
+            <a href="https://scholar.google.com/citations?user=rPtCtJUAAAAJ&hl=en" class="btn btn-scholar" target="_blank">Google Scholar</a>
+            <a href="mailto:tobias.fellner@icp.uni-stuttgart.com" class="btn btn-email">Email Me</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="news">
+            <h2>Latest News</h2>
+            <div class="news-item">
+                <strong>March 2026:</strong> I recently presented my findings at the International Conference. 
+                <br>
+                <a href="news-march-2026.html" class="read-more">Read more about this &rarr;</a>
+            </div>
+            <div class="news-item">
+                <strong>January 2026:</strong> Our new paper was accepted for publication!
+            </div>
+        </section>
+
+        <section id="cv">
+            <h2>Curriculum Vitae</h2>
+            <h3>Education</h3>
+            <ul>
+                <li><strong>Ph.D. in Physics</strong> - University of Stuttgart, Since 2024</li>
+                <li><strong>M.Sc. in Physics</strong> - University of Stuttgart, 2021-2024</li>
+            </ul>
+            <h3>Work Experience</h3>
+            <ul>
+                <li><strong>Doctoral Researcher</strong> - Institue for Computational Physics, University of Stuttgart, Since 2024</li>
+            </ul>
+        </section>
+
+        <section id="publications">
+            <h2>Scientific Publications</h2>
+            <ul>
+                <li>[Your Name], et al. "Title of the amazing paper." <em>Journal of Great Science</em>, 2026.</li>
+                <li>[Your Name], et al. "Another great paper." <em>Science Journal</em>, 2024.</li>
+            </ul>
+        </section>
+
+        <section id="conferences">
+            <h2>Conference Presentations</h2>
+            <ul>
+                <li>"Title of Talk", <em>Name of Conference</em>, City, Country, 2026.</li>
+                <li>"Poster Title", <em>Another Conference</em>, City, Country, 2025.</li>
+            </ul>
+        </section>
+    </div>
+
 </body>
 </html>
