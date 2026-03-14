@@ -4,34 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tobias Fellner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    
     <style>
-        /* This section (CSS) controls how everything looks */
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; background-color: #f9f9f9; }
-        header { background-color: #2c3e50; color: white; padding: 40px 20px; text-align: center; }
+        
+        /* Header and Navigation */
+        header { position: relative; background-color: #2c3e50; color: white; padding: 40px 20px; text-align: center; }
+        .top-nav { position: absolute; top: 20px; right: 30px; }
+        .top-nav a { color: white; text-decoration: none; margin-left: 15px; font-weight: bold; font-size: 16px; }
+        .top-nav a:hover { text-decoration: underline; }
+
         .profile-pic { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid white; margin-bottom: 15px; }
-        .social-buttons { margin-top: 15px; }
-        .btn { display: inline-block; padding: 10px 20px; margin: 5px; text-decoration: none; border-radius: 5px; color: white; font-weight: bold; }
+        
+        /* Intro text inside header */
+        .intro-text { max-width: 800px; margin: 20px auto; font-size: 16px; color: #ecf0f1; }
+
+        /* Social Buttons */
+        .social-buttons { margin-top: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; max-width: 900px; margin-left: auto; margin-right: auto; }
+        
+        /* Updated Button CSS for Icon-Only Circular Look */
+        .btn { display: inline-flex; align-items: center; justify-content: center; width: 45px; height: 45px; text-decoration: none; border-radius: 50%; color: white; font-size: 20px; transition: opacity 0.2s; }
+        .btn:hover { opacity: 0.85; }
+        
+        /* Brand Colors */
         .btn-linkedin { background-color: #0077b5; }
         .btn-scholar { background-color: #4285f4; }
         .btn-email { background-color: #e74c3c; }
+        .btn-researchgate { background-color: #00ccbb; }
+        .btn-arxiv { background-color: #b31b1b; }
+        .btn-github { background-color: #333333; }
+        .btn-orcid { background-color: #a6ce39; color: #ffffff; }
+
         .container { max-width: 900px; margin: 0 auto; padding: 20px; }
-        section { background: white; padding: 30px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        section { background: white; padding: 30px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); scroll-margin-top: 20px; }
         h2 { border-bottom: 2px solid #2c3e50; padding-bottom: 10px; color: #2c3e50; }
+        h3 { color: #34495e; margin-top: 25px; }
+        
         .news-item { border-left: 4px solid #3498db; padding-left: 15px; margin-bottom: 20px; }
-        .read-more { color: #3498db; text-decoration: none; font-weight: bold; }
+        .pub-item { margin-bottom: 20px; }
+        .pub-title { font-weight: bold; font-size: 16px; color: #2c3e50; display: block; }
+        .pub-authors { display: block; margin-bottom: 3px; }
+        .pub-journal { font-style: italic; }
     </style>
 </head>
 <body>
 
     <header>
+        <nav class="top-nav">
+            <a href="#news">News</a>
+            <a href="#publications">Publications</a>
+            <a href="#about-me">About Me</a>
+        </nav>
+
         <img src="profile_picture.jpg" alt="My Profile Picture" class="profile-pic">
         <h1>Tobias Fellner</h1>
-        <p>PhD student | Quantum Reservoir Computing</p>
+        <p style="font-size: 18px; font-weight: bold; margin-top: -10px;">PhD student | Quantum Machine Learning | Quantum Reservoir Computing</p>
+        
+        <div class="intro-text">
+            <p>
+                Hi, I'm Tobias, a PhD student in physics at the University of Stuttgart. I explore how quantum physical systems can be utilized for machine learning, specifically for predicting and analyzing time series data. While my primary focus is on quantum reservoir computing, my research also covers variational quantum algorithms, the robustness of quantum machine learning models, and physical reservoir computing. I work at the Institute for Computational Physics under Prof. Dr. Christian Holm, and am affiliated with the International Max Planck Research School for Intelligent Systems (IMPRS-IS) and the SimTech Graduate School.            
+            </p>
+        </div>
         
         <div class="social-buttons">
-            <a href="https://www.linkedin.com/in/tobias-fellner-112003256/" class="btn btn-linkedin" target="_blank">LinkedIn</a>
-            <a href="https://scholar.google.com/citations?user=rPtCtJUAAAAJ&hl=en" class="btn btn-scholar" target="_blank">Google Scholar</a>
-            <a href="mailto:tobias.fellner@icp.uni-stuttgart.de" class="btn btn-email">Email</a>
+            <a href="mailto:tobias.fellner@icp.uni-stuttgart.de" class="btn btn-email" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/tobias-fellner-112003256/" class="btn btn-linkedin" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://scholar.google.com/citations?user=rPtCtJUAAAAJ&hl=en" class="btn btn-scholar" target="_blank" title="Google Scholar"><i class="ai ai-google-scholar"></i></a>
+            <a href="https://github.com/tobias-fllnr" class="btn btn-github" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.researchgate.net/profile/Tobias-Fellner-3" class="btn btn-researchgate" target="_blank" title="ResearchGate"><i class="ai ai-researchgate"></i></a>
+            <a href="https://arxiv.org/search/?searchtype=author&query=Fellner%2C+T" class="btn btn-arxiv" target="_blank" title="arXiv"><i class="ai ai-arxiv"></i></a>
+            <a href="https://orcid.org/0009-0001-2319-5635" class="btn btn-orcid" target="_blank" title="ORCID"><i class="ai ai-orcid"></i></a>
         </div>
     </header>
 
@@ -39,50 +83,93 @@
         <section id="news">
             <h2>Latest News</h2>
             <div class="news-item">
-                <strong>01/2026:</strong> Paper published in Machine Learning: Science and Technology: <a href="https://iopscience.iop.org/article/10.1088/2632-2153/ae365f" target="_blank">Quantum vs. classical: a comprehensive benchmark study for predicting time series with variational quantum machine learning</a>
+                <strong>01/2026:</strong> Our work "<a href="https://iopscience.iop.org/article/10.1088/2632-2153/ae365f" target="_blank">Quantum vs. classical: A comprehensive benchmark study for predicting time series with variational quantum machine learning</a>" was published in <em>Machine Learning: Science and Technology</em>.
             </div>
             <div class="news-item">
-                <strong>01/2026:</strong> New arXiv preprint: <a href="https://arxiv.org/abs/2509.08481" target="_blank">Robustness of quantum algorithms: Worst-case fidelity bounds and implications for design</a>
+                <strong>01/2026:</strong> New arXiv preprint: "<a href="https://arxiv.org/abs/2509.08481" target="_blank">Robustness of quantum algorithms: Worst-case fidelity bounds and implications for design</a>".
             </div>
             <div class="news-item">
-                <strong>11/2025:</strong> Presented our work "Quantum vs. classical: a comprehensive benchmark study for predicting time series with variational quantum machine learning" at  <a href="https://qtml2025.cqt.sg/" target="_blank"> Quantum Techniques in Machine Learning </a> in Singapore
+                <strong>11/2025:</strong> I presented a poster on "Quantum vs. classical: A comprehensive benchmark study for time series prediction using variational quantum algorithms" at <a href="https://qtml2025.cqt.sg/" target="_blank">Quantum Techniques in Machine Learning 2025</a> in Singapore.
             </div>
             <div class="news-item">
-                <strong>09/2025:</strong> Presentation at the  <a href="https://enumath2025.eu/" target="_blank"> European Conference on Numerical Mathematics and Advanced Applications </a> in Heidelberg, Germany
+                <strong>09/2025:</strong> Earned the IOP trusted reviewer status.
             </div>
             <div class="news-item">
-                <strong>06/2025:</strong> New arXiv preprint: <a href="https://arxiv.org/abs/2506.08455" target="_blank"> The interplay of robustness and generalization in quantum machine learning </a>
+                <strong>09/2025:</strong> I gave a talk on "Generating reservoir state descriptions with random matrices" at the <a href="https://enumath2025.eu/" target="_blank">European Conference on Numerical Mathematics and Advanced Applications</a> in Heidelberg, Germany.
             </div>
             <div class="news-item">
-                <strong>04/2025:</strong> Presented our work "Generating quantum reservoir state representations with random matrices" at <a href="https://qctip2025.com/" target="_blank"> Quantum Computing: Theory in Practice</a> in Berlin, Germany
+                <strong>06/2025:</strong> New arXiv preprint: "<a href="https://arxiv.org/abs/2506.08455" target="_blank">The interplay of robustness and generalization in quantum machine learning</a>".
+            </div>
+<div class="news-item">
+                <strong>04/2025:</strong> I presented a poster on "Generating reservoir state descriptions with random matrices" at <a href="https://qctip2025.com/" target="_blank">Quantum Computing: Theory in Practice 2025</a> in Berlin, Germany.
             </div>
             <div class="news-item">
-                <strong>03/2025:</strong> Paper published in Machine Learning: Science and Technology: <a href="https://arxiv.org/abs/2506.08455" target="_blank"> Generating quantum reservoir state representations with random matrices</a>
+                <strong>03/2025:</strong> Our work "<a href="https://arxiv.org/abs/2506.08455" target="_blank">Generating quantum reservoir state representations with random matrices</a>" was published in <em>Machine Learning: Science and Technology</em>.
             </div>
             <div class="news-item">
-                <strong>03/2025:</strong> Presented two contributions at the <a href="https://www.dpg-physik.de/aktivitaeten-und-programme/tagungen/fruehjahrstagungen/2025" target="_blank"> DPG Spring meeting</a> in Bonn, Germany
+                <strong>03/2025:</strong> I gave a talk and presented a poster at the <a href="https://www.dpg-physik.de/aktivitaeten-und-programme/tagungen/fruehjahrstagungen/2025" target="_blank">DPG Spring Meeting 2025</a> in Bonn, Germany.
             </div>
             <div class="news-item">
-                <strong>10/2024:</strong> Started my PhD at the <a href="https://www.icp.uni-stuttgart.de/" target="_blank"> Institute for Computational Physics</a>
+                <strong>10/2024:</strong> Started my PhD at the <a href="https://www.icp.uni-stuttgart.de/" target="_blank">Institute for Computational Physics</a>.
             </div>
             <div class="news-item">
-                <strong>10/2024:</strong> Sucesfully defended my Master Thesis: <a href="https://elib.uni-stuttgart.de/bitstreams/9146ee3d-2a97-47f0-9bee-7ad6ca87a5fb/download target="_blank"> Quantum machine learning for time series prediction</a>
+                <strong>10/2024:</strong> Successfully defended my Master Thesis: "<a href="https://elib.uni-stuttgart.de/bitstreams/9146ee3d-2a97-47f0-9bee-7ad6ca87a5fb/download" target="_blank">Quantum machine learning for time series prediction</a>".
             </div>
             <div class="news-item">
-                <strong>09/2024:</strong> Presented our work on "Generating quantum reservoir state representations with random matrices" at the  : <a href="https://eqai.eu/eqai-2024/" target="_blank"> European Summer School on Quantum AI</a> in Lignano Sabbiadoro, Italy
+                <strong>09/2024:</strong> I presented a poster on "Random quantum reservoir measurements for time series forecasting" at the <a href="https://eqai.eu/eqai-2024/" target="_blank">European Summer School on Quantum AI 2024</a> in Lignano Sabbiadoro, Italy.
             </div>
         </section>
 
-        <section id="cv">
-            <h2>Curriculum Vitae</h2>
+        <section id="publications">
+            <h2>Publications</h2>
+            <ul>
+                <li class="pub-item">
+                    <span class="pub-title">Quantum vs. classical: A comprehensive benchmark study for predicting time series with variational quantum machine learning</span>
+                    <span class="pub-authors"><b>Tobias Fellner</b>, David A Kreplin, Samuel Tovey, Christian Holm</span>
+                    <span class="pub-journal">Machine Learning: Science and Technology</span>, 7(1): 010501, 2026. IOP Publishing.<br>
+                    DOI: <a href="https://doi.org/10.1088/2632-2153/ae365f" target="_blank">10.1088/2632-2153/ae365f</a>
+                </li>
+                <li class="pub-item">
+                    <span class="pub-title">Robustness of quantum algorithms: Worst-case fidelity bounds and implications for design</span>
+                    <span class="pub-authors">Julian Berberich, <b>Tobias Fellner</b>, Robert L Kosut, Christian Holm</span>
+                    <span class="pub-journal">arXiv preprint arXiv:2509.08481</span>, 2025.<br>
+                    DOI: <a href="https://doi.org/10.48550/arXiv.2509.08481" target="_blank">10.48550/arXiv.2509.08481</a>
+                </li>
+                <li class="pub-item">
+                    <span class="pub-title">The interplay of robustness and generalization in quantum machine learning</span>
+                    <span class="pub-authors">Julian Berberich, <b>Tobias Fellner</b>, Christian Holm</span>
+                    <span class="pub-journal">arXiv preprint arXiv:2506.08455</span>, 2025.<br>
+                    DOI: <a href="https://doi.org/10.48550/arXiv.2506.08455" target="_blank">10.48550/arXiv.2506.08455</a>
+                </li>
+                <li class="pub-item">
+                    <span class="pub-title">Generating quantum reservoir state representations with random matrices</span>
+                    <span class="pub-authors">Samuel Tovey, <b>Tobias Fellner</b>, Christian Holm, Michael Spannowsky</span>
+                    <span class="pub-journal">Machine Learning: Science and Technology</span>, 6(1): 015068, 2025. IOP Publishing.<br>
+                    DOI: <a href="https://doi.org/10.1088/2632-2153/adc0e2" target="_blank">10.1088/2632-2153/adc0e2</a>
+                </li>
+            </ul>
+        </section>
+
+        <section id="about-me">
+            <h2>About Me</h2>
+            
             <h3>Education</h3>
             <ul>
-                <li><strong>Ph.D. in Physics</strong> - University of Stuttgart, Since 2024</li>
-                <li><strong>M.Sc. in Physics</strong> - University of Stuttgart, 2021-2024</li>
+                <li><strong>Ph.D. in Physics</strong> - University of Stuttgart, Since October 2024<br>
+                    Institute for Computational Physics. Associated with the International Max Planck Research School for Intelligent Systems (IMPRS-IS) and the SimTech Graduate School.
+                </li>
+                <li><strong>M.Sc. in Physics</strong> - University of Stuttgart, October 2021 - October 2024<br>
+                    Included an exchange semester at Chalmers University of Technology in Gothenburg, Sweden.
+                </li>
+                <li><strong>B.Sc. in Physics</strong> - University of Stuttgart, October 2018 - September 2021<br>
+                </li>
             </ul>
-            <h3>Work Experience</h3>
+
+            <h3>Academic & Work Experience</h3>
             <ul>
-                <li><strong>Doctoral Researcher</strong> - Institue for Computational Physics, University of Stuttgart, Since 2024</li>
+                <li><strong>Doctoral Researcher</strong> - Institute for Computational Physics, University of Stuttgart, Since October 2024</li>
+                <li><strong>Teaching & Supervision</strong> - Supervising several Final Thesis Projects and tutoring Bachelor and Master level courses, Since October 2020</li>
+                <li><strong>Mentorship</strong> - Mentor for international students (April 2023 - March 2024) and Tutor at Chancenwerk e. V. (October 2019 - July 2023)</li>
             </ul>
         </section>
 
