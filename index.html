@@ -4,11 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tobias Fellner</title>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%233498db'/><text x='50' y='50' font-family='Arial, sans-serif' font-size='45' font-weight='bold' fill='%23ffffff' dominant-baseline='central' text-anchor='middle'>TF</text></svg>" type="image/svg+xml">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; background-color: #f9f9f9; }
+        /* Adds the smooth scrolling effect to the whole page */
+        html { scroll-behavior: smooth; }
+
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; background-color: #f9f9f9; display: flex; flex-direction: column; min-height: 100vh; }
         
         /* Header and Navigation */
         header { position: relative; background-color: #2c3e50; color: white; padding: 40px 20px; text-align: center; }
@@ -37,7 +43,7 @@
         .btn-github { background-color: #333333; }
         .btn-orcid { background-color: #a6ce39; color: #ffffff; }
 
-        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; flex: 1; }
         section { background: white; padding: 30px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); scroll-margin-top: 20px; }
         h2 { border-bottom: 2px solid #2c3e50; padding-bottom: 10px; color: #2c3e50; }
         h3 { color: #34495e; margin-top: 25px; }
@@ -47,6 +53,27 @@
         .pub-title { font-weight: bold; font-size: 16px; color: #2c3e50; display: block; }
         .pub-authors { display: block; margin-bottom: 3px; }
         .pub-journal { font-style: italic; }
+
+        /* Footer Styles */
+        footer { background-color: #2c3e50; color: #ecf0f1; text-align: center; padding: 20px; margin-top: auto; font-size: 14px; }
+        footer a { color: #3498db; text-decoration: none; margin: 0 10px; }
+        footer a:hover { text-decoration: underline; }
+
+        /* Mobile Responsiveness Fixes */
+        @media (max-width: 768px) {
+            .top-nav {
+                position: relative; /* Removes the absolute pin to the top right */
+                top: 0;
+                right: 0;
+                margin-bottom: 25px; /* Adds space between menu and profile picture */
+                display: flex;
+                justify-content: center;
+                gap: 15px;
+            }
+            .top-nav a {
+                margin-left: 0; /* Resets the left margin since we are using gap now */
+            }
+        }
     </style>
 </head>
 <body>
@@ -100,7 +127,7 @@
             <div class="news-item">
                 <strong>06/2025:</strong> New arXiv preprint: "<a href="https://arxiv.org/abs/2506.08455" target="_blank">The interplay of robustness and generalization in quantum machine learning</a>".
             </div>
-<div class="news-item">
+            <div class="news-item">
                 <strong>04/2025:</strong> I presented a poster on "Generating reservoir state descriptions with random matrices" at <a href="https://qctip2025.com/" target="_blank">Quantum Computing: Theory in Practice 2025</a> in Berlin, Germany.
             </div>
             <div class="news-item">
@@ -172,8 +199,12 @@
                 <li><strong>Mentorship</strong> - Mentor for international students (April 2023 - March 2024) and Tutor at Chancenwerk e. V. (October 2019 - July 2023)</li>
             </ul>
         </section>
-
     </div>
+
+    <footer>
+        &copy; 2026 Tobias Fellner. All rights reserved.<br>
+        <a href="impressum.html">Imprint</a> | <a href="privacy.html">Privacy Policy</a>
+    </footer>
 
 </body>
 </html>
