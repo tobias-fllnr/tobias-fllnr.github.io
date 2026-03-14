@@ -11,28 +11,97 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     
     <style>
+        /* --- THEME VARIABLES --- */
+        :root {
+            --bg-color: #f9f9f9;
+            --text-color: #333333;
+            --header-bg: #2c3e50;
+            --header-text: #ffffff;
+            --intro-text: #ecf0f1;
+            --section-bg: #ffffff;
+            --section-shadow: rgba(0,0,0,0.1);
+            --heading-color: #2c3e50;
+            --subheading-color: #34495e;
+            --link-color: #3498db;
+            --timeline-line: #bdc3c7;
+            --timeline-dot: #2c3e50;
+            --timeline-dot-border: #ffffff;
+            --timeline-strong: #2c3e50;
+            --pub-title: #2c3e50;
+            --footer-bg: #2c3e50;
+            --footer-text: #ecf0f1;
+        }
+
+        /* Dark Mode Overrides */
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --header-bg: #1a202c;
+            --header-text: #f7fafc;
+            --intro-text: #cbd5e0;
+            --section-bg: #1e1e1e;
+            --section-shadow: rgba(0,0,0,0.5);
+            --heading-color: #63b3ed;
+            --subheading-color: #90cdf4;
+            --link-color: #63b3ed;
+            --timeline-line: #4a5568;
+            --timeline-dot: #63b3ed;
+            --timeline-dot-border: #1e1e1e;
+            --timeline-strong: #63b3ed;
+            --pub-title: #63b3ed;
+            --footer-bg: #1a202c;
+            --footer-text: #a0aec0;
+        }
+
         /* Adds the smooth scrolling effect to the whole page */
         html { scroll-behavior: smooth; }
 
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; background-color: #f9f9f9; display: flex; flex-direction: column; min-height: 100vh; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            line-height: 1.6; 
+            margin: 0; 
+            padding: 0; 
+            color: var(--text-color); 
+            background-color: var(--bg-color); 
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh; 
+            transition: background-color 0.3s, color 0.3s;
+        }
         
+        /* Ensure links are readable in both themes */
+        a { color: var(--link-color); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
         /* Header and Navigation */
-        header { position: relative; background-color: #2c3e50; color: white; padding: 40px 20px; text-align: center; }
-        .top-nav { position: absolute; top: 20px; right: 30px; }
-        .top-nav a { color: white; text-decoration: none; margin-left: 15px; font-weight: bold; font-size: 16px; }
+        header { position: relative; background-color: var(--header-bg); color: var(--header-text); padding: 40px 20px; text-align: center; transition: background-color 0.3s; }
+        .top-nav { position: absolute; top: 20px; right: 30px; display: flex; align-items: center; }
+        .top-nav a { color: var(--header-text); text-decoration: none; margin-left: 15px; font-weight: bold; font-size: 16px; }
         .top-nav a:hover { text-decoration: underline; }
 
-        .profile-pic { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid white; margin-bottom: 15px; }
+        /* Theme Toggle Button */
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--header-text);
+            font-size: 20px;
+            cursor: pointer;
+            margin-left: 20px;
+            transition: color 0.2s;
+        }
+        .theme-toggle:hover { color: var(--link-color); }
+
+        .profile-pic { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid var(--header-text); margin-bottom: 15px; }
         
         /* Intro text inside header */
-        .intro-text { max-width: 800px; margin: 20px auto; font-size: 16px; color: #ecf0f1; }
+        .intro-text { max-width: 800px; margin: 20px auto; font-size: 16px; color: var(--intro-text); }
 
         /* Social Buttons */
         .social-buttons { margin-top: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; max-width: 900px; margin-left: auto; margin-right: auto; }
         
         /* Updated Button CSS for Icon-Only Circular Look */
         .btn { display: inline-flex; align-items: center; justify-content: center; width: 45px; height: 45px; text-decoration: none; border-radius: 50%; color: white; font-size: 20px; transition: opacity 0.2s; }
-        .btn:hover { opacity: 0.85; }
+        .btn:hover { opacity: 0.85; text-decoration: none; }
         
         /* Brand Colors */
         .btn-linkedin { background-color: #0077b5; }
@@ -44,13 +113,13 @@
         .btn-orcid { background-color: #a6ce39; color: #ffffff; }
 
         .container { max-width: 900px; margin: 0 auto; padding: 20px; flex: 1; }
-        section { background: white; padding: 30px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); scroll-margin-top: 20px; }
-        h2 { border-bottom: 2px solid #2c3e50; padding-bottom: 10px; color: #2c3e50; }
-        h3 { color: #34495e; margin-top: 25px; }
+        section { background: var(--section-bg); padding: 30px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px var(--section-shadow); scroll-margin-top: 20px; transition: background-color 0.3s; }
+        h2 { border-bottom: 2px solid var(--heading-color); padding-bottom: 10px; color: var(--heading-color); }
+        h3 { color: var(--subheading-color); margin-top: 25px; }
         
         /* --- TIMELINE CSS --- */
         .timeline {
-            border-left: 2px solid #bdc3c7; /* The vertical line */
+            border-left: 2px solid var(--timeline-line); 
             margin-left: 10px;
             padding-left: 25px;
             margin-top: 20px;
@@ -63,30 +132,31 @@
         .news-item::before {
             content: '';
             position: absolute;
-            left: -32px; /* Pulls the dot perfectly over the vertical line */
+            left: -32px; 
             top: 6px;
             width: 10px;
             height: 10px;
-            background-color: #2c3e50; /* Dark blue matching header */
-            border: 3px solid white; /* White ring to create a cutout effect */
+            background-color: var(--timeline-dot); 
+            border: 3px solid var(--timeline-dot-border); 
             border-radius: 50%;
-            box-shadow: 0 0 0 1px #bdc3c7; /* Subtle grey outer ring */
+            box-shadow: 0 0 0 1px var(--timeline-line); 
+            transition: background-color 0.3s, border-color 0.3s;
         }
         /* Style the dates slightly to match the timeline */
         .news-item strong {
-            color: #2c3e50; 
+            color: var(--timeline-strong); 
             margin-right: 5px;
         }
         /* -------------------- */
 
         .pub-item { margin-bottom: 20px; }
-        .pub-title { font-weight: bold; font-size: 16px; color: #2c3e50; display: block; }
+        .pub-title { font-weight: bold; font-size: 16px; color: var(--pub-title); display: block; }
         .pub-authors { display: block; margin-bottom: 3px; }
         .pub-journal { font-style: italic; }
 
         /* Footer Styles */
-        footer { background-color: #2c3e50; color: #ecf0f1; text-align: center; padding: 20px; margin-top: auto; font-size: 14px; }
-        footer a { color: #3498db; text-decoration: none; margin: 0 10px; }
+        footer { background-color: var(--footer-bg); color: var(--footer-text); text-align: center; padding: 20px; margin-top: auto; font-size: 14px; transition: background-color 0.3s; }
+        footer a { color: var(--link-color); text-decoration: none; margin: 0 10px; }
         footer a:hover { text-decoration: underline; }
 
         /* Mobile Responsiveness Fixes */
@@ -99,8 +169,12 @@
                 display: flex;
                 justify-content: center;
                 gap: 15px;
+                flex-wrap: wrap;
             }
             .top-nav a {
+                margin-left: 0;
+            }
+            .theme-toggle {
                 margin-left: 0;
             }
         }
@@ -113,6 +187,9 @@
             <a href="#news">News</a>
             <a href="#publications">Publications</a>
             <a href="#about-me">About Me</a>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
         </nav>
 
         <img src="profile_picture.jpg" alt="My Profile Picture" class="profile-pic">
@@ -238,5 +315,38 @@
         <a href="impressum.html">Imprint</a> | <a href="privacy.html">Privacy Policy</a>
     </footer>
 
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        const icon = toggleBtn.querySelector('i');
+        
+        // 1. Check for saved user preference in localStorage
+        const currentTheme = localStorage.getItem('theme');
+        
+        // 2. If saved, apply it. If not, check the OS/Browser system settings
+        if (currentTheme) {
+            if (currentTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                icon.classList.replace('fa-moon', 'fa-sun');
+            }
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            icon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        // 3. Listen for clicks on the toggle button
+        toggleBtn.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            
+            if (theme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                icon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                icon.classList.replace('fa-moon', 'fa-sun');
+            }
+        });
+    </script>
 </body>
 </html>
