@@ -41,23 +41,18 @@
             --intro-text: #cbd5e0;
             --section-bg: #1e1e1e;
             --section-shadow: rgba(0,0,0,0.5);
-            /* Headings are now white */
             --heading-color: #ffffff;
             --subheading-color: #ffffff;
-            /* Links stay blue */
             --link-color: #63b3ed;
-            /* Timeline elements and dates are now white */
             --timeline-line: #ffffff;
             --timeline-dot: #ffffff;
             --timeline-dot-border: #1e1e1e;
             --timeline-strong: #ffffff;
-            /* Publication titles are now white */
             --pub-title: #ffffff;
             --footer-bg: #1a202c;
             --footer-text: #a0aec0;
         }
 
-        /* Adds the smooth scrolling effect to the whole page */
         html { scroll-behavior: smooth; }
 
         body { 
@@ -73,41 +68,87 @@
             transition: background-color 0.3s, color 0.3s;
         }
         
-        /* Ensure links are readable in both themes */
         a { color: var(--link-color); text-decoration: none; }
         a:hover { text-decoration: underline; }
 
-        /* Header and Navigation */
-        header { position: relative; background-color: var(--header-bg); color: var(--header-text); padding: 40px 20px; text-align: center; transition: background-color 0.3s; }
-        .top-nav { position: absolute; top: 20px; right: 30px; display: flex; align-items: center; }
-        .top-nav a { color: var(--header-text); text-decoration: none; margin-left: 15px; font-weight: bold; font-size: 16px; }
+        /* Header Layout */
+        header { 
+            position: relative; 
+            background-color: var(--header-bg); 
+            color: var(--header-text); 
+            padding: 0 0 40px 0; /* Removed top padding to let banner touch the top */
+            text-align: center; 
+            transition: background-color 0.3s; 
+        }
+
+        /* Banner acts as a cover photo */
+        .banner-img {
+            width: 100%;
+            aspect-ratio: 4 / 1;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Navigation sits absolutely positioned over the banner */
+        .top-nav { 
+            position: absolute; 
+            top: 20px; 
+            right: 30px; 
+            display: flex; 
+            align-items: center; 
+            z-index: 10; 
+        }
+        
+        /* Nav links forced to white with a shadow so they are readable over any banner image */
+        .top-nav a { 
+            color: #ffffff; 
+            text-decoration: none; 
+            margin-left: 20px; 
+            font-weight: bold; 
+            font-size: 16px; 
+            text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+        }
         .top-nav a:hover { text-decoration: underline; }
 
-        /* Theme Toggle Button */
         .theme-toggle {
             background: none;
             border: none;
-            color: var(--header-text);
+            color: #ffffff;
             font-size: 20px;
             cursor: pointer;
             margin-left: 20px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.8);
             transition: color 0.2s;
         }
         .theme-toggle:hover { color: var(--link-color); }
 
-        .profile-pic { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid var(--header-text); margin-bottom: 15px; }
+        /* Profile picture overlaps the banner */
+        .profile-pic { 
+            width: 200px; 
+            height: 200px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            border: 6px solid var(--header-bg); /* Dynamic border matches header below it */
+            background-color: var(--header-bg);
+            margin-top: -100px; /* Pulls the picture up over the banner */
+            position: relative;
+            z-index: 2;
+            margin-bottom: 15px; 
+            transition: border-color 0.3s, background-color 0.3s;
+        }
         
-        /* Intro text inside header */
+        /* Container for the text content inside the header */
+        .header-content {
+            padding: 0 20px;
+        }
+
         .intro-text { max-width: 800px; margin: 20px auto; font-size: 16px; color: var(--intro-text); }
 
         /* Social Buttons */
         .social-buttons { margin-top: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; max-width: 900px; margin-left: auto; margin-right: auto; }
-        
-        /* Updated Button CSS for Icon-Only Circular Look */
         .btn { display: inline-flex; align-items: center; justify-content: center; width: 45px; height: 45px; text-decoration: none; border-radius: 50%; color: white; font-size: 20px; transition: opacity 0.2s; }
         .btn:hover { opacity: 0.85; text-decoration: none; }
         
-        /* Brand Colors */
         .btn-linkedin { background-color: #0077b5; }
         .btn-scholar { background-color: #4285f4; }
         .btn-email { background-color: #e74c3c; }
@@ -122,64 +163,46 @@
         h3 { color: var(--subheading-color); margin-top: 25px; }
         
         /* --- TIMELINE CSS --- */
-        .timeline {
-            border-left: 2px solid var(--timeline-line); 
-            margin-left: 10px;
-            padding-left: 25px;
-            margin-top: 20px;
-        }
-        .news-item {
-            position: relative;
-            margin-bottom: 25px;
-        }
-        /* The dots on the timeline */
-        .news-item::before {
-            content: '';
-            position: absolute;
-            left: -32px; 
-            top: 6px;
-            width: 10px;
-            height: 10px;
-            background-color: var(--timeline-dot); 
-            border: 3px solid var(--timeline-dot-border); 
-            border-radius: 50%;
-            box-shadow: 0 0 0 1px var(--timeline-line); 
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-        /* Style the dates slightly to match the timeline */
-        .news-item strong {
-            color: var(--timeline-strong); 
-            margin-right: 5px;
-        }
-        /* -------------------- */
+        .timeline { border-left: 2px solid var(--timeline-line); margin-left: 10px; padding-left: 25px; margin-top: 20px; }
+        .news-item { position: relative; margin-bottom: 25px; }
+        .news-item::before { content: ''; position: absolute; left: -32px; top: 6px; width: 10px; height: 10px; background-color: var(--timeline-dot); border: 3px solid var(--timeline-dot-border); border-radius: 50%; box-shadow: 0 0 0 1px var(--timeline-line); transition: background-color 0.3s, border-color 0.3s; }
+        .news-item strong { color: var(--timeline-strong); margin-right: 5px; }
 
         .pub-item { margin-bottom: 20px; }
         .pub-title { font-weight: bold; font-size: 16px; color: var(--pub-title); display: block; }
         .pub-authors { display: block; margin-bottom: 3px; }
         .pub-journal { font-style: italic; }
 
-        /* Footer Styles */
         footer { background-color: var(--footer-bg); color: var(--footer-text); text-align: center; padding: 20px; margin-top: auto; font-size: 14px; transition: background-color 0.3s; }
         footer a { color: var(--link-color); text-decoration: none; margin: 0 10px; }
         footer a:hover { text-decoration: underline; }
 
         /* Mobile Responsiveness Fixes */
         @media (max-width: 768px) {
+            .banner-img {
+                /* Make the banner slightly taller on mobile so the nav and profile pic don't collide */
+                aspect-ratio: 5 / 2; 
+            }
             .top-nav {
-                position: relative;
-                top: 0;
+                position: absolute;
+                top: 15px;
                 right: 0;
-                margin-bottom: 25px;
-                display: flex;
+                width: 100%;
                 justify-content: center;
-                gap: 15px;
+                gap: 10px;
                 flex-wrap: wrap;
             }
             .top-nav a {
                 margin-left: 0;
+                margin: 0 5px;
             }
             .theme-toggle {
-                margin-left: 0;
+                margin-left: 5px;
+            }
+            .profile-pic {
+                width: 120px;
+                height: 120px;
+                margin-top: -60px; /* Adjusted overlap for mobile */
             }
         }
     </style>
@@ -187,6 +210,8 @@
 <body>
 
     <header>
+        <img src="banner.jpg" alt="Tobias Fellner Banner" class="banner-img">
+
         <nav class="top-nav">
             <a href="#news">News</a>
             <a href="#publications">Publications</a>
@@ -196,24 +221,26 @@
             </button>
         </nav>
 
-        <img src="profile_picture.jpg" alt="My Profile Picture" class="profile-pic">
-        <h1>Tobias Fellner</h1>
-        <p style="font-size: 18px; font-weight: bold; margin-top: -10px;">PhD student | Quantum Machine Learning | Quantum Reservoir Computing</p>
-        
-        <div class="intro-text">
-            <p>
-                Hi, I'm Tobias, a PhD student in physics at the University of Stuttgart. I explore how quantum physical systems can be utilized for machine learning, specifically for predicting and analyzing time series data. While my primary focus is on quantum reservoir computing, my research also covers variational quantum algorithms, the robustness of quantum machine learning models, and physical reservoir computing. I work at the Institute for Computational Physics under the supervision of Prof. Dr. Christian Holm, and am affiliated with the International Max Planck Research School for Intelligent Systems (IMPRS-IS) and the SimTech Graduate School.            
-            </p>
-        </div>
-        
-        <div class="social-buttons">
-            <a href="mailto:tobias.fellner@icp.uni-stuttgart.de" class="btn btn-email" title="Email"><i class="fas fa-envelope"></i></a>
-            <a href="https://www.linkedin.com/in/tobias-fellner-112003256/" class="btn btn-linkedin" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://scholar.google.com/citations?user=rPtCtJUAAAAJ&hl=en" class="btn btn-scholar" target="_blank" title="Google Scholar"><i class="ai ai-google-scholar"></i></a>
-            <a href="https://github.com/tobias-fllnr" class="btn btn-github" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://www.researchgate.net/profile/Tobias-Fellner-3" class="btn btn-researchgate" target="_blank" title="ResearchGate"><i class="ai ai-researchgate"></i></a>
-            <a href="https://arxiv.org/search/?searchtype=author&query=Fellner%2C+T" class="btn btn-arxiv" target="_blank" title="arXiv"><i class="ai ai-arxiv"></i></a>
-            <a href="https://orcid.org/0009-0001-2319-5635" class="btn btn-orcid" target="_blank" title="ORCID"><i class="ai ai-orcid"></i></a>
+        <div class="header-content">
+            <img src="profile_picture.jpg" alt="Tobias Fellner" class="profile-pic">
+            <h1>Tobias Fellner</h1>
+            <p style="font-size: 18px; font-weight: bold; margin-top: -10px;">PhD student | Quantum Machine Learning | Quantum Reservoir Computing</p>
+            
+            <div class="intro-text">
+                <p>
+                    Hi, I'm Tobias, a PhD student in physics at the University of Stuttgart. I explore how quantum physical systems can be utilized for machine learning, specifically for predicting and analyzing time series data. While my primary focus is on quantum reservoir computing, my research also covers variational quantum algorithms, the robustness of quantum machine learning models, and physical reservoir computing. I work at the Institute for Computational Physics under the supervision of Prof. Dr. Christian Holm, and am affiliated with the International Max Planck Research School for Intelligent Systems (IMPRS-IS) and the SimTech Graduate School.            
+                </p>
+            </div>
+            
+            <div class="social-buttons">
+                <a href="mailto:tobias.fellner@icp.uni-stuttgart.de" class="btn btn-email" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/tobias-fellner-112003256/" class="btn btn-linkedin" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://scholar.google.com/citations?user=rPtCtJUAAAAJ&hl=en" class="btn btn-scholar" target="_blank" title="Google Scholar"><i class="ai ai-google-scholar"></i></a>
+                <a href="https://github.com/tobias-fllnr" class="btn btn-github" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.researchgate.net/profile/Tobias-Fellner-3" class="btn btn-researchgate" target="_blank" title="ResearchGate"><i class="ai ai-researchgate"></i></a>
+                <a href="https://arxiv.org/search/?searchtype=author&query=Fellner%2C+T" class="btn btn-arxiv" target="_blank" title="arXiv"><i class="ai ai-arxiv"></i></a>
+                <a href="https://orcid.org/0009-0001-2319-5635" class="btn btn-orcid" target="_blank" title="ORCID"><i class="ai ai-orcid"></i></a>
+            </div>
         </div>
     </header>
 
@@ -323,10 +350,8 @@
         const toggleBtn = document.getElementById('theme-toggle');
         const icon = toggleBtn.querySelector('i');
         
-        // 1. Check for saved user preference in localStorage
         const currentTheme = localStorage.getItem('theme');
         
-        // 2. If saved, apply it. If not, check the OS/Browser system settings
         if (currentTheme) {
             if (currentTheme === 'dark') {
                 document.documentElement.setAttribute('data-theme', 'dark');
@@ -337,7 +362,6 @@
             icon.classList.replace('fa-moon', 'fa-sun');
         }
 
-        // 3. Listen for clicks on the toggle button
         toggleBtn.addEventListener('click', () => {
             let theme = document.documentElement.getAttribute('data-theme');
             
